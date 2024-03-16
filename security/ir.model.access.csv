@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Access_department,Access_department,model_department,,1,1,1,1
+
+Access_course,Access_course,model_course,,1,1,1,1
+
+Access_class,Access_class,model_quanlysinhvien_class,,1,1,1,1
+
+Access_student,Access_student,model_quanlysinhvien_student,,1,1,1,1
+
+Access_point,Access_point,model_quanlysinhvien_point,,1,1,1,1
+
+
+Access_subject,Access_subject,model_quanlysinhvien_subject,,1,1,1,1
+
+
+Access_wizard_student,Access_wizard_student,model_wizard_student,,1,1,1,1

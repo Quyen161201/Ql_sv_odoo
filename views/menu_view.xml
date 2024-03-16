@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem name="Quản lý sinh viên" id="student_manager_menu"  action="department_act_window"/>
+        <menuitem name="Khoa" id="department_menu" parent="student_manager_menu" action="department_act_window"/>
+         <menuitem name="Khóa học" id="course_menu" parent="student_manager_menu" action="course_act_window"/>
+        <menuitem name="Lớp" id="class_menu" parent="student_manager_menu" action="class_act_window"/>
+        <menuitem name="sinh viên" id="student_menu" parent="sale.sale_menu_root" action="student_act_window"/>
+        <menuitem name="Môn học" id="subject_menu" parent="student_manager_menu" action="subject_act_window"/>
+        <menuitem name="Điểm" id="point_menu" parent="student_manager_menu" action="point_act_window"/>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="department_form_view" model="ir.ui.view">
+            <field name="name">department.form</field>
+            <field name="model">department</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="name" placeholder=" Tên khoa"/>
+                            </group>
+                            <group>
+                                <field name="year"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Lớp" name="class_ids">
+                                <field name="class_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="department_tree_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.department.tree</field>
+            <field name="model">department</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="name"/>
+                    <field name="year"/>
+<!--                    <field name="class_ids" widget="many2many_tags"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="department_search_view" model="ir.ui.view">
+            <field name="name">department.search</field>
+            <field name="model">department</field>
+            <field name="arch" type="xml">
+                <search string="Khoa">
+                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('class_ids', 'ilike', self)]"/>
+                    <field name="class_ids" />
+                    <group expand="1" string="Group By">
+                        <filter string="Khoa" name="department" domain="[]" context="{'group_by':'name'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="department_act_window" model="ir.actions.act_window">
+            <field name="name">Department</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">department</field>
+<!--            <field name="context">{'search_default_department':1}</field>-->
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+
+    </data>
+</odoo>

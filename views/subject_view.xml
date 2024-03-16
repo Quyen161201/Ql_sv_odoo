@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="subject_form_view" model="ir.ui.view">
+            <field name="name">subject.form</field>
+            <field name="model">quanlysinhvien.subject</field>
+            <field name="arch" type="xml">
+                <form string="Môn học">
+                    <sheet>
+
+                        <group>
+
+                                <field name="name" placeholder=" Tên môn học"/>
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="subject_tree_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.subject.tree</field>
+            <field name="model">quanlysinhvien.subject</field>
+            <field name="arch" type="xml">
+                <tree string="Môn học">
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+
+<!--        <record id="department_search_view" model="ir.ui.view">-->
+<!--            <field name="name">department.search</field>-->
+<!--            <field name="model">department</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="Khoa">-->
+<!--                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('class_ids', 'ilike', self)]"/>-->
+<!--                    <field name="class_ids" />-->
+<!--                    <group expand="1" string="Group By">-->
+<!--                        <filter string="Khoa" name="department" domain="[]" context="{'group_by':'name'}"/>-->
+
+<!--                    </group>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="subject_act_window" model="ir.actions.act_window">
+            <field name="name">Môn học</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlysinhvien.subject</field>
+<!--            <field name="context">{'search_default_department':1}</field>-->
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+
+    </data>
+</odoo>

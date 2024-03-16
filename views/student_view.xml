@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.student.form</field>
+            <field name="model">quanlysinhvien.student</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                     <header>
+                         <button type="object" string=" Đang học" class="btn-primary" name="check_status_studing_student" invisible="status == 'studing'"/>
+                         <button type="object" string=" Đã tốt nghiệp" class="btn-primary"  name="check_status_graduated_student" invisible="status == 'graduated'"/>
+                         <button string="Bỏ học" type="action" name="%(wizard_student_wizard_action)d" class="btn-primary" context="{'default_student_id': active_id}" invisible="status == 'stop_studying'" />
+                        <field name="status" widget="statusbar" />
+                     </header>
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="phone"/>
+                            </group>
+                             <group>
+                                <field name="sex"/>
+                                <field name="address"/>
+                            </group>
+                            <group>
+
+                                <field name = "class_id"/>
+                                <field name = "reason" readonly="1" invisible="status != 'stop_studying'"/>
+
+                            </group>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_tree_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.student.tree</field>
+            <field name="model">quanlysinhvien.student</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách sinh viên">
+
+                                <field name="name"/>
+                                <field name="phone"/>
+                                <field name="sex"/>
+                                <field name="address"/>
+                                <field name="class_id"/>
+                                <field name="status"/>
+
+                </tree>
+            </field>
+        </record>
+
+  <record id="student_search_view" model="ir.ui.view">
+            <field name="name">student.search</field>
+            <field name="model">quanlysinhvien.student</field>
+            <field name="arch" type="xml">
+                <search string="Khoa">
+                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('class_id', 'ilike', self)]"/>
+<!--                    <field name="class_ids" />-->
+                    <group expand="1" string="Group By">
+                        <filter string="Lớp" name="class" domain="[]" context="{'group_by':'class_id'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="student_act_window" model="ir.actions.act_window">
+            <field name="name">Lớp</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlysinhvien.student</field>
+            <field name="context">{'search_default_class':1}</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+    </data>
+</odoo>

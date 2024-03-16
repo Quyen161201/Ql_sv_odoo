@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="point_form_view" model="ir.ui.view">
+            <field name="name">point.form</field>
+            <field name="model">quanlysinhvien.point</field>
+            <field name="arch" type="xml">
+                <form string="Môn học">
+                    <sheet>
+                        <group>
+                                <field name="name"/>
+                                <field name="student_id"/>
+                        </group>
+                         <group>
+                                <field name="subject_id"/>
+                                <field name="status" />
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="subject_tree_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.point.tree</field>
+            <field name="model">quanlysinhvien.point</field>
+            <field name="arch" type="xml">
+                <tree string="Môn học">
+                    <field name="student_id"/>
+                    <field name="subject_id"/>
+                    <field name="name" />
+                    <field name="status" />
+
+<!--                   <field name="sum_point" />-->
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="point_search_view" model="ir.ui.view">
+            <field name="name">point.search</field>
+            <field name="model">quanlysinhvien.point</field>
+            <field name="arch" type="xml">
+                <search string="Điểm">
+                    <field name="name" sum="Total" filter_domain="['|', ('name', 'ilike', self), ('student_id', 'ilike', self)]"/>
+<!--                    <field name="class_ids" />-->
+                    <group expand="1" string="Group By">
+                        <filter string="Sinh viên" name="point" domain="[]" context="{'group_by':'student_id'}" />
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="point_act_window" model="ir.actions.act_window">
+            <field name="name">Điểm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlysinhvien.point</field>
+            <field name="context">{'search_default_point':1}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+    </data>
+</odoo>

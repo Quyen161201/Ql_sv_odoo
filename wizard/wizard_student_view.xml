@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_student_wizard_form" model="ir.ui.view">
+            <field name="name">Lý do buộc thôi học</field>
+            <field name="model">wizard.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+<!--                        <field name="name"/>-->
+                        <field name="student_id" invisible="1"/>
+                        <field name="reason"/>
+
+                    </group>
+
+                    <footer>
+                        <button string="Save" name="btn_reason_student" type="object" class="oe_highlight" data-hotkey="q"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="wizard_student_wizard_action" model="ir.actions.act_window">
+
+            <field name="name"> Lý do buộc thôi học</field>
+            <field name="res_model">wizard.student</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+    </data>
+</odoo>

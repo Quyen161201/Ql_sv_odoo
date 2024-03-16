@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="class_form_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.class.form</field>
+            <field name="model">quanlysinhvien.class</field>
+            <field name="arch" type="xml">
+                <form string="ModelTitle">
+                    <sheet>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="department_id"/>
+                                <field name="course_id"/>
+
+                            </group>
+                        </group>
+                         <notebook>
+                            <page string="Sinh viên" name="student_ids">
+                                <field name="student_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="class_tree_view" model="ir.ui.view">
+            <field name="name">quanlysinhvien.class.tree</field>
+            <field name="model">quanlysinhvien.class</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                   <field name="name"/>
+                    <field name="department_id"/>
+                    <field name="course_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+  <record id="department_search_view" model="ir.ui.view">
+            <field name="name">class.search</field>
+            <field name="model">quanlysinhvien.class</field>
+            <field name="arch" type="xml">
+                <search string="Khoa">
+                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('department_id', 'ilike', self)]"/>
+<!--                    <field name="class_ids" />-->
+                    <group expand="1" string="Group By">
+                        <filter string="Khoa" name="class" domain="[]" context="{'group_by':'department_id'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="class_act_window" model="ir.actions.act_window">
+            <field name="name">Lớp</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlysinhvien.class</field>
+            <field name="context">{'search_default_class':1}</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+    </data>
+</odoo>
